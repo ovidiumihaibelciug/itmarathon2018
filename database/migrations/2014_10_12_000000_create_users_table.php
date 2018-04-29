@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('image_id');
             $table->boolean('is_doctor')->default(false);
             $table->integer('role')->comment('1 - Administrator, 2 - Client')->default(1);
             $table->rememberToken();

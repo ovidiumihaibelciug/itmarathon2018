@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Media extends Migration
+class Pet extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class Media extends Migration
      */
     public function up()
     {
-        Schema::create('media', function (Blueprint $table) {
+        Schema::create('pet', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('type')->default(0)->comment('0 - image, 1 - video');
-            $table->string('filename');
-            $table->string('comment')->nullable();
+            $table->integer('owner_id');
+            $table->integer('image_id');
+            $table->string('name');
+            $table->string('sex');
+            $table->text('description');
+            $table->integer('age');
+            $table->string('type')->comment('Rasa');
             $table->timestamps();
         });
     }
@@ -29,6 +33,6 @@ class Media extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('media');
+        Schema::dropIfExists('pet');
     }
 }

@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(Media::class, function (Faker $faker) {
+$factory->define(App\Media::class, function (Faker $faker) {
     return [
 //        'filename' => $faker->image('public/userdata/images/', 200, 200, 'people'),
         'type' => 0,
