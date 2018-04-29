@@ -13,6 +13,7 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
 
 Route::prefix('api')->group(function () {
     Route::get('/user', 'AuthenticationController@getAuthUser')->name('user');

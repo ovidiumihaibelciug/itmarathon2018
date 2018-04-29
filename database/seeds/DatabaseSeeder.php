@@ -11,7 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//         $this->call(UsersTableSeeder::class);
+        //         $this->call(UsersTableSeeder::class);
+        factory(App\Media::class, 4)->create();
         factory(\App\User::class, 4)->create();
         factory(App\User::class)->create([
             'first_name' => 'Alex',
@@ -24,5 +25,7 @@ class DatabaseSeeder extends Seeder
             }
         ]);
         factory(App\Pet::class, 4)->create();
+        factory(App\Cabinet::class, 4)->create();
+        factory(App\Service::class, 4)->create();
     }
 }

@@ -26,4 +26,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function cabinet() {
+        $this->hasMany(Cabinet::class);
+    }
+
+    public function pets() {
+        $this->hasMany(Pet::class);
+    }
 }

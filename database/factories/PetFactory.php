@@ -10,6 +10,7 @@ $factory->define(App\Pet::class, function (Faker $faker) {
         'description' => $faker->text($maxNbChars = 200),
         'type' => "Catelush cubanez",
         'owner_id' => App\User::all()->random()->id,
+        'cabinet_id' => App\Cabinet::all()->random()->id,
         'image_id' => function() {
             return factory(App\Media::class)->create()->id;
         },
