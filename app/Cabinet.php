@@ -30,4 +30,8 @@ class Cabinet extends Model {
     public function pets() {
         return $this->hasMany(Pet::class);
     }
+
+    public function appointments() {
+        return $this->hasMany(Appointment::class);
+    }
 }

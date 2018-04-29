@@ -19,6 +19,10 @@
                             <li style="margin-top: 10px;" v-for="(day, index) in schedule" :key="index">{{day}}</li>
                         </ul>
                     </div>
+                    <router-link :to="{ name: 'addappointment', params: {cabinet: cabinet.id} }" class="button is-primary is-medium is-fullwidth">
+                        Apply
+                    </router-link>
+
                 </div>
                 <div class="column is-three-thirds">
                     <div class="box">
@@ -95,7 +99,6 @@
         watch: {
             '$route': function(){
                 this.getCabinet();
-
             }
         },
         data: function() {
@@ -104,7 +107,8 @@
                 cabinet: {},
                 loading: true,
                 schedule: [],
-                doctorImg: "http://www.nationalheartinstitute.com/images/doctor-img4.jpg"                
+                doctorImg: "http://www.nationalheartinstitute.com/images/doctor-img4.jpg",         
+                isComponentModalActive: false,          
            }
         },
         methods: {

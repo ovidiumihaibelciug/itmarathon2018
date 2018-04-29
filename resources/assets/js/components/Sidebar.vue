@@ -4,7 +4,7 @@
             General
         </p>
         <ul class="menu-list">
-            <li><a>Dashboard</a></li>
+            <li><router-link :to="{name: 'appointments'}">Appointments</router-link></li>
         </ul>
 
         <!-- //v-if="$user.role===3" -->
@@ -14,6 +14,12 @@
         <ul class="menu-list">
             <li><router-link :to="{name: 'addcabinet'}">Add Cabinet {{ $user.cabinet_id ? "(disabled)" : "" }}</router-link></li>
             <li><router-link :to="{name: 'addtreatment'}">Add Treatment</router-link></li>
+        </ul>
+        <p class="menu-label"> 
+            Manage pets
+        </p>
+        <ul class="menu-list">
+            <li><router-link :to="{name: 'addpet'}">Add Pet</router-link></li>            
         </ul>
     </aside>
 </template>

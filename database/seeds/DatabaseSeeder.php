@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             }
         ]);
         factory(App\Pet::class, 4)->create();
-       factory(App\Service::class, 4)->create();
+        factory(App\Service::class, 4)->create();
+        factory(App\Appointment::class, 4)->create();
     }
 }

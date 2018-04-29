@@ -1,13 +1,14 @@
 <template>
     <section class="profile-section">
         <b-loading :is-full-page="true" :active.sync="isLoading"></b-loading>
-        <div class="container">
+        <div class="container" v-if="!isLoading">
             <div class="columns">
                 <div class="column is-one-third">
                     <div class="box profile-user-box is-centered">
                         <div class="user-img is-centered" :style="{ backgroundImage: 'url(' + image + ')' }"></div>
                         <div class="user-fullname">{{ user.last_name + " "+ user.first_name }}</div>
                         <div class="user-email">{{ user.email }}</div>
+                        <div class="user-label tag is-link">{{ roleNumberToString(user.role) }}</div>
                         <div class="user-description">{{ user.description ? user.description : "" }}</div>
                     </div>
                 </div>
@@ -60,7 +61,28 @@
                         this.isLoading = false;
                     });
             },
+            roleNumberToString(role) {
+                console.log(role)
+                if (role == 1) {
+                    return "Administrator";
+                } else
+
+                if (role == 2) {
+                    return "Doctor";
+                } else 
+
+                if (role == 3) {
+                    return "Client";
+                }
+            }
         },
         components: {PetBoxHorizontal}
     }
 </script>
+
+<style scoped>
+    .profile-section {
+        margin-top: 150px;
+    }
+</style>
+
