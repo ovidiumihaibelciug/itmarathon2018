@@ -9,10 +9,7 @@
                         <h3 class="title-doctors">Doctors</h3>
                         <div>
                             <div v-for="(item, index) in cabinet._users">
-                                <div class="doctor-box">
-                                    <div class="box doctor-img" :style="{ backgroundImage: 'url(' + doctorImg + ')' }"></div>
-                                    <div class="doctor-fullname">{{ item.first_name + " " + item.last_name }}</div>
-                                </div>
+                                <UserBox :user="item"/>
                             </div>
                         </div>
                     </div>
@@ -76,7 +73,9 @@
 
 <script>
     import { API } from '../config';
+    import UserBox from "../components/UserBox";
     export default {
+        components: {UserBox},
         mounted() {
             axios.get( API + 'cabinet/' + this.$route.params.id)
             .then(res => {

@@ -13,6 +13,7 @@
         <b-field label="Description">
             <b-input maxlength="1000" type="textarea" is-required v-model="description" placeholder="Description..."></b-input>
         </b-field>
+
         <b-field label="Waist (cm)">
             <b-input min="10" max="300" type="number" is-required v-model="waist" placeholder="Waist"></b-input>
         </b-field>
@@ -64,6 +65,10 @@
                 const { name, birthday, description, type, sex, waist, observations } = this;
                 axios.post(API + 'pet', { name, birthday, description, type, sex, waist, observations }).then(({ data }) => {
                     if(data.success) {
+                        this.$toast.open({
+                            message: 'Pet ' + name + ' added',
+                            type: 'is-success'
+                        });
                         this.$router.push({ name: 'mypets' });
                     }
                 });
@@ -71,7 +76,3 @@
         }
     }
 </script>
-
-<style scoped>
-
-</style>

@@ -1,38 +1,44 @@
 .profile-section {
-    margin-top: $margin;
-    .profile-user-box {
-        padding: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        .user-img {
-            height: 200px;
-            width: 200px;
-            background-position: center center;
-            background-size: cover;
-            border-radius: 50%;
-            border: 7px solid whitesmoke;
-            -webkit-box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.35);
-            -moz-box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.35);
-            box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.35);
-            margin-top: -100px;
-            text-align: center;
-        }
-        .user-fullname {
-            margin-top: 10px;
-            font-size: 1.5rem;
-            font-weight: 500;
-        }
-        .user-email {
-            margin-top: -5px;
-            font-size: .9rem;
-            color: rgba(0,0,0, .7);
-        }
-        .user-description {
-            margin-top: 10px;
-            padding: 0 20px;
-            text-align: center;
-        }
+  margin-top: $margin;
+  .profile-user-box {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .user-img {
+      height: 200px;
+      width: 200px;
+      background-position: center center;
+      background-size: cover;
+      border-radius: 50%;
+      border: 7px solid whitesmoke;
+      -webkit-box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.35);
+      -moz-box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.35);
+      box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.35);
+      margin-top: -100px;
+      text-align: center;
     }
+    .user-fullname {
+      margin-top: 10px;
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+    .user-email {
+      margin-top: -5px;
+      font-size: .9rem;
+      color: rgba(0, 0, 0, .7);
+    }
+    .user-description {
+      margin-top: 10px;
+      padding: 0 20px;
+      text-align: center;
+    }
+    .user-info-item {
+      padding: 12px 0 12px;
+    }
+    .user-info-item:not(:last-child) {
+      border-bottom: 1px solid #eeeeee;
+    }
+  }
 }

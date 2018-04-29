@@ -28,6 +28,13 @@ class CabinetController extends Controller
         }
     }
 
+    public function all() {
+        return response()->json([
+            'success' => true,
+            'cabinets' => Cabinet::all(),
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

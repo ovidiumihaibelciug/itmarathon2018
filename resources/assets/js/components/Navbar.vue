@@ -27,7 +27,7 @@
                             Salut, {{$user.first_name}}
                         </a>
                         <div class="navbar-dropdown is-boxed">
-                            <router-link :to="{name: 'profile'}" class="navbar-item"><b-icon pack="fa" icon="cog"></b-icon>&nbsp; Profile</router-link>
+                            <router-link :to="{name: 'profile', params: { username: $user.username }}" class="navbar-item"><b-icon pack="fa" icon="cog"></b-icon>&nbsp; Profile</router-link>
                             <router-link :to="{name: 'settings'}" class="navbar-item"><b-icon pack="fa" icon="cog"></b-icon>&nbsp; Settings</router-link>
                         </div>
                     </div>

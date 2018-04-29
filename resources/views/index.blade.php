@@ -20,7 +20,7 @@
 </div>
 
 <!-- Scripts -->
-
+<script src="https://momentjs.com/downloads/moment.js"></script>
 <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

@@ -25,10 +25,23 @@ class PetController extends Controller
             'pet' => $pet,
         ]);
     }
-    function get(User $user) {
+    function get($username) {
+        $user = User::where('username',$username)->first();
         return response()->json([
             'success' => true,
             'pet' => $user->pets,
+        ]);
+    }
+    function getPet(Pet $pet){
+        return response()->json([
+            'success' => true,
+            'pet' => $pet,
+        ]);
+    }
+    function delete(Pet $pet) {
+        $pet->delete();
+        return response()->json([
+            'success' => true,
         ]);
     }
 }

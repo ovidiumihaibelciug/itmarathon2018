@@ -2,7 +2,7 @@
     <div class="afterApp">
         <Navbar/>
 
-        <div style="margin-top: 10px"><router-view></router-view></div>
+        <router-view></router-view>
 
 
     </div>

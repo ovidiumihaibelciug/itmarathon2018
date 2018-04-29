@@ -9,7 +9,7 @@ $factory->define(App\Pet::class, function (Faker $faker) {
         'sex' => $faker->numberBetween(0, 1),
         'waist' => $faker->numberBetween(0, 300),
         'description' => 'abc',
-        'type' => $pets[$faker->numberBetween(0, count($pets-1))],
+        'type' => $pets[ rand(0, count($pets) - 1)] ,
         'birthday' => $faker->dateTime($max = 'now'),
         'user_id' => App\User::all()->random()->id,
         'observations' => $faker->text($maxNbChars = 100),

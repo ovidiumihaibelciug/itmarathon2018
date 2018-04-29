@@ -6,6 +6,7 @@ import MyPets from "../containers/MyPets.vue";
 import Dashboard from "../containers/Dashboard.vue";
 import AddPet from "../containers/AddPet.vue";
 import PetProfile from "../containers/PetProfile.vue";
+import Settings from "../containers/Settings.vue";
 
 const router = new VueRouter({
     linkExactActiveClass: "is-exact-active",
@@ -21,6 +22,12 @@ const router = new VueRouter({
             path: "/profile",
             component: Profile,
             name: "profile-auth"
+            //   meta: { onlyAuth: true }
+        },
+        {
+            path: "/settings",
+            component: Settings,
+            name: "settings"
             //   meta: { onlyAuth: true }
         },
         {

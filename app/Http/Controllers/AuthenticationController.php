@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,5 +20,11 @@ class AuthenticationController extends Controller
                 'success' => false
             ]);
         }
+    }
+    function getUser($username) {
+        return response()->json([
+            'success' => true,
+            'user' => User::where('username',$username)->first()
+        ]);
     }
 }

@@ -1,5 +1,5 @@
 <template>
-    <div class="box pet-box">
+    <div class="box pet-box" v-if="!isDeleted">
         <article class="media">
             <div class="media-left">
                 <PetImage :pet="pet"/>
@@ -11,7 +11,8 @@
                         <br>
                         {{pet.description}}
                     </p>
-                    <router-link class="button is-small" :to="{name: 'petProfile', params: { id: pet.id }}">View profile</router-link>
+                    <router-link class="button is-small" style="width: 200px;" :to="{name: 'petProfile', params: { id: pet.id }}">View profile</router-link>
+                    <button v-if="pet.user_id === $user.id" @click="dp(pet)" class="button is-small is-danger" style="float: right;">Delete pet profile</button>
                 </div>
             </div>
         </article>
@@ -20,12 +21,39 @@
 
 <script>
     import PetImage from "./PetImage";
+    import {API} from "../config";
     export default {
         props: ['pet'],
+        data: function() {
+            return {
+                isDeleted: false,
+            };
+        },
+        methods: {
+            dp(pet) {
+                this.$dialog.confirm({
+                    title: 'Privacy Politics',
+                    message: `Are you sure you want to delete this pet.`,
+                    cancelText: 'Not really',
+                    confirmText: 'Of course',
+                    type: 'is-danger',
+                    hasIcon: true,
+                    onConfirm: () => {
+                        axios.delete(API + 'pet/' + pet.id)
+                            .then(() => {
+                                this.$toast.open({
+                                    message: 'Pet deleted!',
+                                    type: 'is-danger'
+                                });
+                                this.isDeleted = true;
+                            });
+                    }
+                });
+            },
+        },
         name: "PetBoxHorizontal",
         components: {PetImage},
-
-    }
+    };
 </script>
 
 <style scoped>
