@@ -8,7 +8,7 @@
         </b-field>
 
         <b-field label="Price">
-            <b-input icon="currency-usd" type="number" required  maxlength="9" v-model="number"></b-input>
+            <b-input icon="currency-usd" type="number" required  maxlength="9" v-model="price"></b-input>
         </b-field>
 
         <b-field label="Icon">
@@ -38,13 +38,14 @@
                 name: '',
                 description: '',
                 number: '',
-                icon: ''
+                icon: '',
+                price: ''
             }
         },
         methods: {
             addTreatment(){
-                const { name, description, icon } = this;
-                axios.post(API + 'treatment', { name, description, icon }).then(({ data }) => {
+                const { name, description, icon, price } = this;
+                axios.post(API + 'treatment', { name, description, icon,  price }).then(({ data }) => {
                     if(data.success) {
                          this.$toast.open({
                             message: "Congratulations!" + name + " added successfully! ",

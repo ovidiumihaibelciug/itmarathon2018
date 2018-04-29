@@ -65,7 +65,7 @@
             incidents() {
                 return [
                     {
-                        type: 'vaccine',
+                        type: 'analysis',
                         cabinet_id: 1,
                         pet: this.pet,
                         date: randomDate(new Date(2012, 0, 1), new Date()),
@@ -73,6 +73,16 @@
                     {pet: this.pet,
                         type: 'vaccine',
                         cabinet_id: 2,
+                        date: randomDate(new Date(2012, 0, 1), new Date()),
+                    },
+                    {pet: this.pet,
+                        type: 'pills',
+                        cabinet_id: 3,
+                        date: randomDate(new Date(2012, 0, 1), new Date()),
+                    },
+                    {pet: this.pet,
+                        type: 'surgery',
+                        cabinet_id: 3,
                         date: randomDate(new Date(2012, 0, 1), new Date()),
                     },
                     {pet: this.pet,

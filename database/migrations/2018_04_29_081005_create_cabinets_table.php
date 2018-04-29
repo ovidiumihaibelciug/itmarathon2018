@@ -18,7 +18,7 @@ class CreateCabinetsTable extends Migration
             $table->string('name');
             $table->string('image_id');
             $table->string('admin_id');
-            $table->string('schedule');
+            $table->string('schedule')->default(0);
             $table->string('description');
             $table->string('location');
             $table->timestamps();

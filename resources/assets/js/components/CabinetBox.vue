@@ -19,7 +19,7 @@
             <div style="position: absolute; bottom: 12px; left: 12px; right: 12px;">
                 <router-link :to="{name: 'cabinet', params: { id: cabinet.id }}" class="button is-small is-outlined is-primary" style="width: 49%;"><b-icon icon="eye" pack="fa"></b-icon><span>Visit</span></router-link>
 
-                <router-link :to="{name: 'cabinet', params: { id: cabinet.id }}" class="button is-small is-outlined is-success" style="width: 49%;"><b-icon icon="comments" pack="fa"></b-icon><span>Contact</span></router-link>
+                <router-link :to="{name: 'addappointment', params: { cabinet: cabinet.id }}" class="button is-small is-outlined is-success" style="width: 49%;"><b-icon icon="comments" pack="fa"></b-icon><span>Contact</span></router-link>
             </div>
         </div>
     </div>

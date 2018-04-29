@@ -44,7 +44,6 @@ class CabinetController extends Controller
         $cabinet->name = $request->name;
         $cabinet->description = $request->description;
         $cabinet->location = $request->location;
-        $cabinet->price = $request->price;
         $cabinet->image_id = '1.jpg';
         $cabinet->admin_id = Auth::user()->id;
         $cabinet->save();
