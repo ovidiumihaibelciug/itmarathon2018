@@ -19,6 +19,7 @@ class CreateServicesTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('icon')->default('user');
+            $table->string('price')->default('5');
             $table->timestamps();
         });
     }

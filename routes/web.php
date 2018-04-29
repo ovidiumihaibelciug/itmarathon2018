@@ -24,4 +24,6 @@ Route::prefix('api')->group(function () {
     Route::post('/pet', 'PetController@add');
     Route::delete('/pet/{pet}', 'PetController@delete');
     Route::get('/pet/profile/{pet}', 'PetController@getPet');
+    Route::post('/cabinet', 'CabinetController@add');
+    Route::post('/treatment', 'ServicesController@add');
 });

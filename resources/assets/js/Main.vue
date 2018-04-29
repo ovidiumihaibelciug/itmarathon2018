@@ -1,10 +1,7 @@
 <template>
     <div class="afterApp">
         <Navbar/>
-
-        <router-view></router-view>
-
-
+        <div style="margin-top: 50px"><router-view></router-view></div>
     </div>
 </template>
 <script>

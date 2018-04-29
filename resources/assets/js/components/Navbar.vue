@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar is-transparent">
+    <nav class="navbar is-transparent is-fixed-top">
         <div class="container">
 
             <div class="navbar-brand">
@@ -21,6 +21,7 @@
                     </a>
                 </div>
                 <div class="navbar-end">
+                    <router-link :to="{name: 'cabinet', params: {id: $user.cabinet_id}}" class="navbar-item"><b-icon icon="hospital-building"></b-icon>&nbsp; My cabinet</router-link>
                     <router-link :to="{name: 'mypets'}" class="navbar-item"><b-icon pack="fa" icon="paw"></b-icon>&nbsp; My pets</router-link>
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link" href="/documentation/overview/start/">
@@ -29,6 +30,7 @@
                         <div class="navbar-dropdown is-boxed">
                             <router-link :to="{name: 'profile', params: { username: $user.username }}" class="navbar-item"><b-icon pack="fa" icon="cog"></b-icon>&nbsp; Profile</router-link>
                             <router-link :to="{name: 'settings'}" class="navbar-item"><b-icon pack="fa" icon="cog"></b-icon>&nbsp; Settings</router-link>
+                            <router-link :to="{name: 'dashboard'}" class="navbar-item"><b-icon pack="fa" icon="cog"></b-icon>&nbsp; Dashboard</router-link>
                         </div>
                     </div>
                 </div>
@@ -45,3 +47,11 @@
         },
     };
 </script>
+
+<style scoped>
+
+    .navbar {
+        box-shadow: 0 0 1px 1px rgba(20,23,28,.1), 0 3px 1px 0 rgba(20,23,28,.1);
+    }
+    
+</style>

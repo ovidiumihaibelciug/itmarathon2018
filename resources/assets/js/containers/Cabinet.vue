@@ -1,5 +1,5 @@
 <template>
-    <section class="cabinet-section">
+    <section class="cabinet-section" style="margin-top: 70px">
         <b-loading :is-full-page="true" :active.sync="loading" :canCancel="true"></b-loading>
         <div class="container" v-if="!loading">
             <div class="columns">
@@ -48,8 +48,15 @@
                                                 </b-icon>
                                                 &nbsp;&nbsp;
                                                 {{ item.name }}
+ 
                                             </p>
                                             <a class="card-header-icon">
+                                                <div class="tag is-link is-pulled-right is-vcentered">
+                                                    {{ item.price }} $
+                                                </div>
+                                                &nbsp;
+                                                &nbsp;                                                
+                                                &nbsp;
                                                 <b-icon
                                                     :icon="props.open ? 'menu-down' : 'menu-up'">
                                                 </b-icon>
@@ -77,15 +84,28 @@
     export default {
         components: {UserBox},
         mounted() {
-            axios.get( API + 'cabinet/' + this.$route.params.id)
-            .then(res => {
-                this.cabinet = res.data.cabinet
-                this.loading = false;
-                console.log(this.cabinet._users);
-            })
-            .catch(err => {
-                console.log(err)
-            });
+            const { id } = this.$route.params;
+            if (id) {
+                axios.get( API + 'cabinet/' + this.$route.params.id)
+                .then(res => {
+                    this.cabinet = res.data.cabinet
+                    this.loading = false;
+                    console.log(this.cabinet._users);
+                })
+                .catch(err => {
+                    console.log(err)
+                });
+            } else {
+                axios.get( API + 'cabinet/' + $user.cabinet_id)
+                .then(res => {
+                    this.cabinet = res.data.cabinet
+                    this.loading = false;
+                    console.log(this.cabinet._users);
+                })
+                .catch(err => {
+                    console.log(err)
+                });
+            }
         },
         data: function() {
             return {
@@ -97,3 +117,7 @@
         }
     }
 </script>
+
+<style scoped>
+   
+</style>

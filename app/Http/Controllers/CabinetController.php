@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cabinet;
+use Illuminate\Support\Facades\Auth;
 
 class CabinetController extends Controller
 {
@@ -35,6 +36,19 @@ class CabinetController extends Controller
         ]);
     }
 
+    function add(Request $request) {
+        $cabinet = new Cabinet();
+        $cabinet->name = $request->name;
+        $cabinet->description = $request->description;
+        $cabinet->location = $request->location;
+        $cabinet->price = $request->price;
+        $cabinet->image_id = '1.jpg';
+        $cabinet->admin_id = Auth::user()->id;
+        $cabinet->save();
+        return response()->json([
+            'success' => true,
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *

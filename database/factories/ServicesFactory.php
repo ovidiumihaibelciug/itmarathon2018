@@ -8,6 +8,7 @@ $factory->define(App\Service::class, function (Faker $faker) {
         'cabinet_id' => rand(1,4),
         'name' => $faker->words($nb = 3, $asText = true),
         'description' => $faker->sentence($nbWords = 6, $variableNbWords = true),
+        'price' => rand(10, 100),
         'icon' => 'home'
     ];
 });
