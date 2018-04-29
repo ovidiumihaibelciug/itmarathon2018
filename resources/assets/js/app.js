@@ -1,3 +1,5 @@
+import {API} from "./config";
+
 require("./bootstrap");
 import Vue from "vue";
 import Buefy from "buefy";
@@ -9,20 +11,16 @@ Vue.use(VueRouter);
 
 Vue.component("root", require("./Main.vue"));
 
-window.vue = new Vue({
-  mounted() {
-    const _this = this;
-    axios.interceptors.response.use(
-      function(response) {
-        return response;
-      },
-      function(error) {
-        if (error.response.status === 404)
-          _this.$router.replace({ name: "404" });
-        return Promise.reject(error);
-      }
-    );
-  },
-  router,
-  el: "#app"
-});
+axios.get( API + 'user' )
+    .then(res => {
+        Vue.prototype.$user = res.data.user;
+
+        window.vue = new Vue({
+            router,
+            el: "#app"
+        });
+
+        console.log("S-o luat userul", res.data.user);
+    })
+    .catch(err => console.log(err));
+

@@ -19,7 +19,7 @@
     import { API } from "../config";
     export default {
         mounted() {
-            axios.get( API + 'user' ).then(res => console.log(res)).catch(err => console.log(err));
+            axios.get( API + 'user' ).then(res => {}).catch(err => console.log(err));
         }
     }
 </script>

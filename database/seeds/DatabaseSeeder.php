@@ -24,8 +24,9 @@ class DatabaseSeeder extends Seeder
                 return factory(App\Media::class)->create(['filename' => 'userdata/images/11.jpg',])->id;
             }
         ]);
+                factory(App\Cabinet::class, 4)->create();
+
         factory(App\Pet::class, 4)->create();
-        factory(App\Cabinet::class, 4)->create();
-        factory(App\Service::class, 4)->create();
+//        factory(App\Service::class, 4)->create();
     }
 }

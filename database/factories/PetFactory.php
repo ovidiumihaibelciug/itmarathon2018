@@ -7,13 +7,12 @@ $factory->define(App\Pet::class, function (Faker $faker) {
         'name' => $faker->userName,
         'age' => $faker->numberBetween(0, 30),
         'sex' => $faker->numberBetween(0, 1),
-        'description' => $faker->text($maxNbChars = 200),
+        'description' => $faker->text($maxNbChars = 100),
         'type' => "Catelush cubanez",
         'owner_id' => App\User::all()->random()->id,
         'cabinet_id' => App\Cabinet::all()->random()->id,
         'image_id' => function() {
             return factory(App\Media::class)->create()->id;
         },
-
     ];
 });

@@ -70,7 +70,11 @@
 "use strict";
 
 
+<<<<<<< Updated upstream
 var bind = __webpack_require__(4);
+=======
+var bind = __webpack_require__(5);
+>>>>>>> Stashed changes
 var isBuffer = __webpack_require__(20);
 
 /*global toString:true*/
@@ -424,10 +428,17 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
+<<<<<<< Updated upstream
     adapter = __webpack_require__(6);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
     adapter = __webpack_require__(6);
+=======
+    adapter = __webpack_require__(7);
+  } else if (typeof process !== 'undefined') {
+    // For node use HTTP adapter
+    adapter = __webpack_require__(7);
+>>>>>>> Stashed changes
   }
   return adapter;
 }
@@ -498,10 +509,129 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
+<<<<<<< Updated upstream
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+=======
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+>>>>>>> Stashed changes
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports) {
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(19);
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(19);
@@ -525,7 +655,11 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
+<<<<<<< Updated upstream
 /* 5 */
+=======
+/* 6 */
+>>>>>>> Stashed changes
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -715,7 +849,11 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
+<<<<<<< Updated upstream
 /* 6 */
+=======
+/* 7 */
+>>>>>>> Stashed changes
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -726,7 +864,11 @@ var settle = __webpack_require__(23);
 var buildURL = __webpack_require__(25);
 var parseHeaders = __webpack_require__(26);
 var isURLSameOrigin = __webpack_require__(27);
+<<<<<<< Updated upstream
 var createError = __webpack_require__(7);
+=======
+var createError = __webpack_require__(8);
+>>>>>>> Stashed changes
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(28);
 
 module.exports = function xhrAdapter(config) {
@@ -902,7 +1044,11 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
+<<<<<<< Updated upstream
 /* 7 */
+=======
+/* 8 */
+>>>>>>> Stashed changes
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -927,7 +1073,11 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
+<<<<<<< Updated upstream
 /* 8 */
+=======
+/* 9 */
+>>>>>>> Stashed changes
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -939,7 +1089,11 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
+<<<<<<< Updated upstream
 /* 9 */
+=======
+/* 10 */
+>>>>>>> Stashed changes
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -965,7 +1119,11 @@ module.exports = Cancel;
 
 
 /***/ }),
+<<<<<<< Updated upstream
 /* 10 */
+=======
+/* 11 */
+>>>>>>> Stashed changes
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3595,6 +3753,7 @@ if (inBrowser && window.Vue) {
 
 
 /***/ }),
+<<<<<<< Updated upstream
 /* 11 */
 /***/ (function(module, exports) {
 
@@ -3704,11 +3863,17 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
+=======
+>>>>>>> Stashed changes
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
+<<<<<<< Updated upstream
 module.exports = __webpack_require__(54);
+=======
+module.exports = __webpack_require__(52);
+>>>>>>> Stashed changes
 
 
 /***/ }),
@@ -3721,7 +3886,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_buefy__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_buefy___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_buefy__);
+<<<<<<< Updated upstream
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__(10);
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__(11);
+>>>>>>> Stashed changes
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routes_routes__ = __webpack_require__(41);
 __webpack_require__(14);
 
@@ -3773,7 +3942,11 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
+<<<<<<< Updated upstream
 window.axios = __webpack_require__(3);
+=======
+window.axios = __webpack_require__(4);
+>>>>>>> Stashed changes
 
 window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
@@ -33711,7 +33884,11 @@ if (typeof jQuery === 'undefined') {
 
 
 var utils = __webpack_require__(0);
+<<<<<<< Updated upstream
 var bind = __webpack_require__(4);
+=======
+var bind = __webpack_require__(5);
+>>>>>>> Stashed changes
 var Axios = __webpack_require__(21);
 var defaults = __webpack_require__(2);
 
@@ -33746,9 +33923,15 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
+<<<<<<< Updated upstream
 axios.Cancel = __webpack_require__(9);
 axios.CancelToken = __webpack_require__(35);
 axios.isCancel = __webpack_require__(8);
+=======
+axios.Cancel = __webpack_require__(10);
+axios.CancelToken = __webpack_require__(35);
+axios.isCancel = __webpack_require__(9);
+>>>>>>> Stashed changes
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -33901,7 +34084,11 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
+<<<<<<< Updated upstream
 var createError = __webpack_require__(7);
+=======
+var createError = __webpack_require__(8);
+>>>>>>> Stashed changes
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -34336,7 +34523,11 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(32);
+<<<<<<< Updated upstream
 var isCancel = __webpack_require__(8);
+=======
+var isCancel = __webpack_require__(9);
+>>>>>>> Stashed changes
 var defaults = __webpack_require__(2);
 var isAbsoluteURL = __webpack_require__(33);
 var combineURLs = __webpack_require__(34);
@@ -34496,7 +34687,11 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
+<<<<<<< Updated upstream
 var Cancel = __webpack_require__(9);
+=======
+var Cancel = __webpack_require__(10);
+>>>>>>> Stashed changes
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -45814,7 +46009,11 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
+<<<<<<< Updated upstream
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(5)))
+=======
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(6)))
+>>>>>>> Stashed changes
 
 /***/ }),
 /* 40 */
@@ -45830,7 +46029,11 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__containers_ExampleComponent_vue__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__containers_ExampleComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__containers_ExampleComponent_vue__);
+<<<<<<< Updated upstream
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(10);
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(11);
+>>>>>>> Stashed changes
 
 
 
@@ -45849,6 +46052,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
 
 /***/ }),
 /* 42 */
+<<<<<<< Updated upstream
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -45945,6 +46149,8 @@ var API = "http://localhost:8000/api/";
 
 /***/ }),
 /* 45 */
+=======
+>>>>>>> Stashed changes
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -45989,6 +46195,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+<<<<<<< Updated upstream
 function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(47)
@@ -45998,10 +46205,17 @@ var normalizeComponent = __webpack_require__(11)
 var __vue_script__ = __webpack_require__(52)
 /* template */
 var __vue_template__ = __webpack_require__(53)
+=======
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(43)
+/* template */
+var __vue_template__ = __webpack_require__(45)
+>>>>>>> Stashed changes
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -46014,7 +46228,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\Main.vue"
+Component.options.__file = "resources/assets/js/containers/ExampleComponent.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -46023,9 +46237,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-165b4458", Component.options)
+    hotAPI.createRecord("data-v-6790efee", Component.options)
   } else {
-    hotAPI.reload("data-v-165b4458", Component.options)
+    hotAPI.reload("data-v-6790efee", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -46036,6 +46250,7 @@ module.exports = Component.exports
 
 
 /***/ }),
+<<<<<<< Updated upstream
 /* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -46067,15 +46282,47 @@ if(false) {
 
 exports = module.exports = __webpack_require__(49)(false);
 // imports
+=======
+/* 43 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+>>>>>>> Stashed changes
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(44);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
-// module
-exports.push([module.i, "\n.fade-enter{\n    -webkit-transition: all .1s;\n    transition: all .1s;\n    -webkit-transform: scale(.9);\n            transform: scale(.9);\n}\n.fade-enter-to{\n    -webkit-transition: all .1s;\n    transition: all .1s;\n    -webkit-transform: scale(1);\n            transform: scale(1);\n}\n.fade-leave{\n    -webkit-transition: all .1s;\n    transition: all .1s;\n    -webkit-transform: scale(1);\n            transform: scale(1);\n}\n.fade-leave-to{\n    -webkit-transition: all .1s;\n    transition: all .1s;\n    -webkit-transform: scale(.9);\n            transform: scale(.9);\n}\n", ""]);
 
-// exports
-
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_1__config__["a" /* API */] + 'user').then(function (res) {
+            return console.log(res);
+        }).catch(function (err) {
+            return console.log(err);
+        });
+    }
+});
 
 /***/ }),
+<<<<<<< Updated upstream
 /* 49 */
 /***/ (function(module, exports) {
 
@@ -46152,12 +46399,20 @@ function toComment(sourceMap) {
 	// eslint-disable-next-line no-undef
 	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
 	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+=======
+/* 44 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+>>>>>>> Stashed changes
 
-	return '/*# ' + data + ' */';
-}
+"use strict";
+/* unused harmony export ROOT */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return API; });
+var ROOT = "http://localhost:8000/";
 
+var API = "http://localhost:8000/api/";
 
 /***/ }),
+<<<<<<< Updated upstream
 /* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -46326,100 +46581,182 @@ function addStyle (obj /* StyleObjectPart */) {
       remove()
     }
   }
+=======
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+>>>>>>> Stashed changes
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
+          _c("div", { staticClass: "panel panel-default" }, [
+            _c("div", { staticClass: "panel-heading" }, [_vm._v("Example")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "panel-body" }, [
+              _vm._v(
+                "\n                    I'm an example component!\n                "
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6790efee", module.exports)
+  }
 }
 
-var replaceText = (function () {
-  var textStore = []
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
 
-  return function (index, replacement) {
-    textStore[index] = replacement
-    return textStore.filter(Boolean).join('\n')
-  }
-})()
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(47)
+/* template */
+var __vue_template__ = __webpack_require__(51)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/Main.vue"
 
-function applyToSingletonTag (styleElement, index, remove, obj) {
-  var css = remove ? '' : obj.css
-
-  if (styleElement.styleSheet) {
-    styleElement.styleSheet.cssText = replaceText(index, css)
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-f5b2feea", Component.options)
   } else {
-    var cssNode = document.createTextNode(css)
-    var childNodes = styleElement.childNodes
-    if (childNodes[index]) styleElement.removeChild(childNodes[index])
-    if (childNodes.length) {
-      styleElement.insertBefore(cssNode, childNodes[index])
-    } else {
-      styleElement.appendChild(cssNode)
-    }
+    hotAPI.reload("data-v-f5b2feea", Component.options)
   }
-}
-
-function applyToTag (styleElement, obj) {
-  var css = obj.css
-  var media = obj.media
-  var sourceMap = obj.sourceMap
-
-  if (media) {
-    styleElement.setAttribute('media', media)
-  }
-  if (options.ssrId) {
-    styleElement.setAttribute(ssrIdKey, obj.id)
-  }
-
-  if (sourceMap) {
-    // https://developer.chrome.com/devtools/docs/javascript-debugging
-    // this makes source maps inside style tags work properly in Chrome
-    css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */'
-    // http://stackoverflow.com/a/26603875
-    css += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + ' */'
-  }
-
-  if (styleElement.styleSheet) {
-    styleElement.styleSheet.cssText = css
-  } else {
-    while (styleElement.firstChild) {
-      styleElement.removeChild(styleElement.firstChild)
-    }
-    styleElement.appendChild(document.createTextNode(css))
-  }
+<<<<<<< Updated upstream
 }
 
 
 /***/ }),
 /* 51 */
 /***/ (function(module, exports) {
+=======
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+>>>>>>> Stashed changes
 
-/**
- * Translates the list format produced by css-loader into something
- * easier to manipulate.
- */
-module.exports = function listToStyles (parentId, list) {
-  var styles = []
-  var newStyles = {}
-  for (var i = 0; i < list.length; i++) {
-    var item = list[i]
-    var id = item[0]
-    var css = item[1]
-    var media = item[2]
-    var sourceMap = item[3]
-    var part = {
-      id: parentId + ':' + i,
-      css: css,
-      media: media,
-      sourceMap: sourceMap
-    }
-    if (!newStyles[id]) {
-      styles.push(newStyles[id] = { id: id, parts: [part] })
-    } else {
-      newStyles[id].parts.push(part)
-    }
-  }
-  return styles
-}
+module.exports = Component.exports
 
 
 /***/ }),
+<<<<<<< Updated upstream
 /* 52 */
+=======
+/* 47 */
+>>>>>>> Stashed changes
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Navbar__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Navbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Navbar__);
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        Navbar: __WEBPACK_IMPORTED_MODULE_0__components_Navbar___default.a
+    }
+});
+
+/***/ }),
+<<<<<<< Updated upstream
+/* 53 */
+=======
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(49)
+/* template */
+var __vue_template__ = __webpack_require__(50)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Navbar.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-cadbadf2", Component.options)
+  } else {
+    hotAPI.reload("data-v-cadbadf2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46430,36 +46767,289 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('asdasda');
-    }
-
-    // computed: {
-    //     ...mapState({
-    //         userFetched: ({ user }) => user.fetched,
-    //     }),
-    //     hideNavbar() {
-    //         const hideNavbar = this.$route.meta.hideNavbar;
-    //         if (hideNavbar) {
-    //             document.getElementsByTagName('html')[0].classList.remove('has-navbar-fixed-top');
-    //         } else {
-    //             document.getElementsByTagName('html')[0].classList.add('has-navbar-fixed-top');
-    //         }
-    //         return !this.$route.meta.hideNavbar;
-    //     },
-    // },
-    // components: {
-    //     Navbar,
-    //     _footer: Footer,
-    // },
-
-});
+/* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
-/* 53 */
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "nav",
+    {
+      staticClass: "navbar is-fixed-top",
+      attrs: { role: "navigation", "aria-label": "main navigation" }
+    },
+    [
+      _c("div", { staticClass: "container" }, [
+        _c(
+          "div",
+          { staticClass: "navbar-brand" },
+          [
+            _c(
+              "router-link",
+              { staticClass: "navbar-item", attrs: { to: "/" } },
+              [
+                _c("img", {
+                  attrs: {
+                    src:
+                      "https://images-ext-2.discordapp.net/external/m924_7fhxcQssOwPe0kNHO76HXhPVaCrWnQcmDTdCiE/https/i.imgur.com/mH23GwLr.png?width=1025&height=257",
+                    alt: "Studeo",
+                    width: "112",
+                    height: "60"
+                  }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                class: [
+                  "button",
+                  "navbar-burger",
+                  _vm.navbarActive ? "is-active" : ""
+                ],
+                on: {
+                  click: function($event) {
+                    _vm.navbarActive = !_vm.navbarActive
+                  }
+                }
+              },
+              [_c("span"), _vm._v(" "), _c("span"), _vm._v(" "), _c("span")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "navbar-end" },
+          [
+            _vm.isMentor
+              ? _c(
+                  "router-link",
+                  {
+                    staticClass: "navbar-item is-tab",
+                    attrs: { to: { name: "dashboard" } }
+                  },
+                  [_vm._v("\n                Cursurile mele\n            ")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "navbar-item is-hoverable has-dropdown" },
+              [
+                _c("a", { staticClass: "navbar-link", attrs: { href: "#" } }, [
+                  _vm._v("Salut, " + _vm._s(_vm.user.first_name))
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "navbar-dropdown" },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "navbar-item flex-center has-text-weight-bold"
+                      },
+                      [
+                        _c(
+                          "span",
+                          [
+                            _vm._v(_vm._s(_vm.user.coins) + " "),
+                            _c("b-icon", {
+                              attrs: {
+                                pack: "fa",
+                                icon: "graduation-cap",
+                                size: "is-small"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "navbar-divider" }),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "navbar-item",
+                        attrs: {
+                          to: {
+                            name: "profile",
+                            params: { username: _vm.user.username }
+                          }
+                        }
+                      },
+                      [
+                        _c("b-icon", { attrs: { pack: "fa", icon: "user" } }),
+                        _vm._v("  Profil")
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "navbar-item",
+                        attrs: { to: { name: "notifications" } }
+                      },
+                      [
+                        _c("b-icon", {
+                          attrs: { pack: "fa", icon: "comment" }
+                        }),
+                        _vm._v("  Notificări")
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "navbar-item",
+                        attrs: { to: { name: "playlists" } }
+                      },
+                      [
+                        _c("b-icon", { attrs: { pack: "fa", icon: "book" } }),
+                        _vm._v("  Bibliotecă")
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "navbar-item",
+                        attrs: { to: { name: "paths" } }
+                      },
+                      [
+                        _c("b-icon", { attrs: { pack: "fa", icon: "road" } }),
+                        _vm._v("  Paths")
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "navbar-item",
+                        attrs: { to: { name: "settings" } }
+                      },
+                      [
+                        _c("b-icon", { attrs: { pack: "fa", icon: "cog" } }),
+                        _vm._v("  Setări")
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "navbar-divider" }),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "navbar-item",
+                        attrs: { to: { name: "help" } }
+                      },
+                      [
+                        _c("b-icon", {
+                          attrs: { pack: "fa", icon: "question-circle" }
+                        }),
+                        _vm._v("  Ajutor")
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "navbar-divider" }),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      { staticClass: "navbar-item", on: { click: _vm.logout } },
+                      [
+                        _c("b-icon", {
+                          attrs: { pack: "fa", icon: "sign-out" }
+                        }),
+                        _vm._v("  Deconectare\n                    ")
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ]
+            )
+          ],
+          1
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-cadbadf2", module.exports)
+  }
+}
+
+/***/ }),
+/* 51 */
+>>>>>>> Stashed changes
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -46469,7 +47059,11 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "afterApp" },
+<<<<<<< Updated upstream
     [_vm._v("\n    asd\n    "), _c("router-view")],
+=======
+    [_c("Navbar"), _vm._v(" "), _c("router-view")],
+>>>>>>> Stashed changes
     1
   )
 }
@@ -46479,12 +47073,20 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
+<<<<<<< Updated upstream
     require("vue-hot-reload-api")      .rerender("data-v-165b4458", module.exports)
+=======
+    require("vue-hot-reload-api")      .rerender("data-v-f5b2feea", module.exports)
+>>>>>>> Stashed changes
   }
 }
 
 /***/ }),
+<<<<<<< Updated upstream
 /* 54 */
+=======
+/* 52 */
+>>>>>>> Stashed changes
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

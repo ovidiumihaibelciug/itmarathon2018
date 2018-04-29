@@ -20,7 +20,7 @@ class CreatePetsTable extends Migration
             $table->integer('cabinet_id');
             $table->string('name');
             $table->string('sex');
-            $table->text('description');
+            $table->string('description');
             $table->integer('age');
             $table->string('type')->comment('Rasa');
             $table->timestamps();
