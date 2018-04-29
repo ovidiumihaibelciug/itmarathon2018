@@ -118,7 +118,7 @@
                     .then(res => {
                         this.cabinet = res.data.cabinet;
                         this.loading = false;
-                        console.log(this.cabinet._users);
+                        console.log('a',this.$route.params);
                         this.schedule = this.cabinet.schedule.split('|');
                     })
                     .catch(err => {

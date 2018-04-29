@@ -4,7 +4,7 @@
 
             <div class="navbar-brand">
                 <router-link :to="{name: 'root'}" class="navbar-item">
-                    <img src="https://www.i-vet.com.au/wp-content/uploads/2015/08/FF_I-Vet_LO.png" alt="Bulma: a modern CSS framework based on Flexbox" width="129" height="35">
+                    <img src="https://shop-mypet.com/wp-content/uploads/2017/10/cropped-MyPet-7.png" alt="Bulma: a modern CSS framework based on Flexbox" width="102" height="50">
                 </router-link>
 
                 <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">

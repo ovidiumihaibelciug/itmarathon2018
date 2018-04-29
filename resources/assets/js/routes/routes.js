@@ -35,7 +35,7 @@ const router = new VueRouter({
       //   meta: { onlyAuth: true }
     },
     {
-      path: "/cabinet/:cabinet",
+      path: "/cabinet",
       component: Cabinet,
       name: "mycabinet"
       //   meta: { onlyAuth: true }
