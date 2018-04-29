@@ -28,10 +28,10 @@ class User extends Authenticatable
     ];
 
     public function cabinet() {
-        $this->hasMany(Cabinet::class);
+        return $this->hasMany(Cabinet::class);
     }
 
     public function pets() {
-        $this->hasMany(Pet::class);
+        return $this->hasMany(Pet::class);
     }
 }

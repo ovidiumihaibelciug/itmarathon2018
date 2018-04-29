@@ -15,12 +15,15 @@ class CreatePetsTable extends Migration
     {
         Schema::create('pets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('owner_id');
+            $table->integer('user_id');
+            $table->integer('cabinet_id')->default(0);
             $table->string('name');
             $table->string('sex');
-            $table->date('birthday')->default(0);
-            $table->date('deathday')->default(0);
+            $table->integer('waist');
+            $table->string('birthday')->default(0);
+            $table->string('deathday')->default(0);
             $table->string('description');
+            $table->string('observations');
             $table->string('type')->comment('Catel/Pisica/Sobolan/Castor');
             $table->timestamps();
         });

@@ -18,18 +18,22 @@
         </b-field>
 
         <b-field label="Sex">
-            <b-select expanded icon="contrast-circle">
+            <b-select expanded icon="contrast-circle" v-model="sex">
                 <option :value="0">Mascul</option>
                 <option :value="1">Femela</option>
             </b-select>
         </b-field>
         <b-field label="Type">
-            <b-select expanded icon="format-list-bulleted-type">
-                <option value="dog">Doog</option>
-                <option value="cat">Cat</option>
+            <b-select expanded icon="format-list-bulleted-type" v-model="type">
+                <option value="dog">Doggo</option>
+                <option value="cat">Catto</option>
+                <option value="fish">Fish</option>
+                <option value="elephant">Elephant</option>
+                <option value="horse">Horse</option>
+                <option value="chicken">Chicken</option>
                 <option value="parrot">Parrot</option>
                 <option value="hamster">Hamster</option>
-                <option value="altceva">Altceva...</option>
+                <option value="else">Something else...</option>
             </b-select>
         </b-field>
         <b-field label="Other observations">
@@ -46,20 +50,22 @@
         name: "AddPet",
         data: function(){
             return {
-                name: '',
+                name: 'Castravecior',
                 birthday: new Date(),
-                description: '',
-                type: null,
-                waist: '',
-                observations: '',
+                description: 'Stecher',
+                type: 'cat',
+                waist: 1234,
+                observations: 'S-a cacat din cer',
                 sex: 0,
             }
         },
         methods: {
             addPet(){
-                const { birthday, description, type, sex, waist, observations } = this;
-                axios.post(API + 'pet', { birthday, description, type, sex, waist, observations }).then(({ data }) => {
-
+                const { name, birthday, description, type, sex, waist, observations } = this;
+                axios.post(API + 'pet', { name, birthday, description, type, sex, waist, observations }).then(({ data }) => {
+                    if(data.success) {
+                        this.$router.push({ name: 'mypets' });
+                    }
                 });
             }
         }

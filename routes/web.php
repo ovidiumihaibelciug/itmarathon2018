@@ -18,5 +18,6 @@ Route::get('/home', 'HomeController@index');
 Route::prefix('api')->group(function () {
     Route::get('/user', 'AuthenticationController@getAuthUser')->name('user');
     Route::get('/cabinet/{id}', 'CabinetController@index')->name('cabinet');
+    Route::get('/pet/{user}', 'PetController@get');
     Route::post('/pet', 'PetController@add');
 });

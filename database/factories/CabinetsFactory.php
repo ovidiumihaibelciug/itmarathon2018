@@ -8,7 +8,7 @@ $factory->define(App\Cabinet::class, function (Faker $faker) {
         'name' => $faker->firstName,
         'location' => $faker->lastName,
         'image_id' => '1.jpg',
-        'description' => $faker->text($maxNbChars = 200),
+        'description' => $faker->text($maxNbChars = 100),
         'location' => $faker->address
     ];
 });

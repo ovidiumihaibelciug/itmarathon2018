@@ -1,36 +1,30 @@
 <template>
-    <div class="box courseBox">
-        <!--<router-link :to="{ name: 'courseWelcome', params: { slug: course.slug } }" style="color: #4a4a4a">-->
-            <!--<div class="columns">-->
-                <!--<div class="column is-one-fifth thumbnail" :style="{backgroundImage: 'url(' + course._image.filename + ')'}"></div>-->
-                <!--<div class="column is-three-quarters">-->
-                    <!--<div class="titleMediaPlaylist">{{ course.title }}</div> <router-link :to="{name: 'profile', params: { username: course._user.username }}">@{{ course._user.username }}</router-link>-->
-                    <!--<p class="content contentMediaPlaylist">{{ course.short_description }}</p>-->
-                    <!--<progress class="progress is-primary progressBox" :value="progress" max="100" style="width: 30%; height: 5px; display: inline-block"></progress>-->
-                <!--</div>-->
-                <!--<div class="column actionsPlaylistCourse">-->
-                    <!--<div v-if="inPlaylist">-->
-                        <!--<b-tooltip label="Elimină cursul din playlist" animated>-->
-                            <!--<router-link :to="{ name: 'playlist', params: { id: course.pivot.playlist_id } }">-->
-                                <!--<i class="fa fa-minus fa-2x deleteCourseFromPlaylistBtn" @click="removeCourseFromPlaylist"></i>-->
-                            <!--</router-link>-->
-                        <!--</b-tooltip>-->
-                    <!--</div>-->
-                    <!--<div v-else>-->
-                        <!--<router-link :to="{ name: 'courses' }">-->
-                            <!--<playlist-dropdown-button :course="course"></playlist-dropdown-button>-->
-                        <!--</router-link>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</router-link>-->
+    <div class="box pet-box">
+        <article class="media">
+            <div class="media-left">
+                <PetImage :pet="pet"/>
+            </div>
+            <div class="media-content">
+                <div class="content">
+                    <p>
+                        <strong>{{pet.name}}</strong> <small>31m </small><span style="float:right"><b-icon :icon="'gender-'+ (pet.sex == 0 ? 'm' : 'fem') +'ale'"></b-icon></span>
+                        <br>
+                        {{pet.description}}
+                    </p>
+                    <router-link class="button is-small" :to="{name: 'petProfile', params: { id: pet.id }}">View profile</router-link>
+                </div>
+            </div>
+        </article>
     </div>
 </template>
 
 <script>
+    import PetImage from "./PetImage";
     export default {
         props: ['pet'],
-        name: "PetBoxHorizontal"
+        name: "PetBoxHorizontal",
+        components: {PetImage},
+
     }
 </script>
 

@@ -1,0 +1,14 @@
+.pet-box {
+  transition: all .1s;
+  .pet-image {
+    transition: all .3s;
+    border-radius: 100%;
+    box-shadow: 1px 2px 0px -5px black;
+  }
+  &:hover {
+    box-shadow: 0 2px 4px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.15);
+    .pet-image {
+      box-shadow: 1px 2px 15px -5px black;
+    }
+  }
+}

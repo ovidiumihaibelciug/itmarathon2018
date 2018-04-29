@@ -3,16 +3,16 @@
 use Faker\Generator as Faker;
 
 $factory->define(App\Pet::class, function (Faker $faker) {
+    $pets = ['dog','cat','fish','elephant','horse','chicken','parrot','hamster', 'else'];
     return [
         'name' => $faker->userName,
-        'age' => $faker->numberBetween(0, 30),
         'sex' => $faker->numberBetween(0, 1),
-        'description' => $faker->text($maxNbChars = 100),
-        'type' => "Catelush cubanez",
-        'owner_id' => App\User::all()->random()->id,
+        'waist' => $faker->numberBetween(0, 300),
+        'description' => 'abc',
+        'type' => $pets[$faker->numberBetween(0, count($pets-1))],
+        'birthday' => $faker->dateTime($max = 'now'),
+        'user_id' => App\User::all()->random()->id,
+        'observations' => $faker->text($maxNbChars = 100),
         'cabinet_id' => App\Cabinet::all()->random()->id,
-        'image_id' => function() {
-            return factory(App\Media::class)->create()->id;
-        },
     ];
 });

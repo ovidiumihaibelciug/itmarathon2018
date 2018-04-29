@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Pet;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PetController extends Controller
 {
@@ -15,10 +17,18 @@ class PetController extends Controller
         $pet->type = $request->type;
         $pet->waist = $request->waist;
         $pet->observations = $request->observations;
+        $pet->sex = $request->sex;
+        $pet->user_id = Auth::user()->id;
         $pet->save();
         return response()->json([
             'success' => true,
             'pet' => $pet,
+        ]);
+    }
+    function get(User $user) {
+        return response()->json([
+            'success' => true,
+            'pet' => $user->pets,
         ]);
     }
 }
