@@ -13,6 +13,12 @@
                             </div>
                         </div>
                     </div>
+                    <div class="box">
+                        <h3 class="title-doctors">Schedule</h3>
+                        <ul style="text-align: center;">
+                            <li style="margin-top: 10px;" v-for="(day, index) in schedule" :key="index">{{day}}</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="column is-three-thirds">
                     <div class="box">
@@ -84,27 +90,12 @@
     export default {
         components: {UserBox},
         mounted() {
-            const { id } = this.$route.params;
-            if (id) {
-                axios.get( API + 'cabinet/' + this.$route.params.id)
-                .then(res => {
-                    this.cabinet = res.data.cabinet
-                    this.loading = false;
-                    console.log(this.cabinet._users);
-                })
-                .catch(err => {
-                    console.log(err)
-                });
-            } else {
-                axios.get( API + 'cabinet/' + $user.cabinet_id)
-                .then(res => {
-                    this.cabinet = res.data.cabinet
-                    this.loading = false;
-                    console.log(this.cabinet._users);
-                })
-                .catch(err => {
-                    console.log(err)
-                });
+            this.getCabinet();
+        },
+        watch: {
+            '$route': function(){
+                this.getCabinet();
+
             }
         },
         data: function() {
@@ -112,8 +103,24 @@
                 image: "https://lh3.googleusercontent.com/-NCsWat0QOiY/WITb5dOr_oI/AAAAAAAAADA/aTZD88KYHHoWw3BZZHACYHqq491bxb7YQCJoC/w940-h788/a97ecf9e10275f41144cc1f23eec145ff81e66e6a904dca4524adea2569ef6b8.jpeg",
                 cabinet: {},
                 loading: true,
+                schedule: [],
                 doctorImg: "http://www.nationalheartinstitute.com/images/doctor-img4.jpg"                
            }
+        },
+        methods: {
+            getCabinet() {
+                const { id } = this.$route.params;
+                axios.get( API + 'cabinet/id/' + (id ? this.$route.params.id : this.$user.cabinet_id))
+                    .then(res => {
+                        this.cabinet = res.data.cabinet;
+                        this.loading = false;
+                        console.log(this.cabinet._users);
+                        this.schedule = this.cabinet.schedule.split('|');
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    });
+            }
         }
     }
 </script>

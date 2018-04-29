@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <router-link :to="{name: 'addpet'}" class="button">Add pet</router-link>
+        <router-link :to="{name: 'addpet'}" class="button m-t-10 m-b-10"><b-icon pack="fa" icon="plus" size="is-small"></b-icon> &nbsp;Add pet</router-link>
         <b-loading :is-full-page="true" :active.sync="isLoading" :canCancel="true"></b-loading>
         <div v-if="pets">
             <PetBoxHorizontal v-for="(pet, i) in pets" :pet="pets[i]" :key="i"/>

@@ -8,7 +8,7 @@
         <div class="card-content">
             <div class="media">
                 <div class="media-content" style="text-align: center;">
-                    <p class="title is-4">{{cabinet.name}}</p>
+                    <p class="title is-4">{{cabinet.name}} <small class="is-pulled-right is-light"><b-icon icon="account" size="is-small"></b-icon>&nbsp;{{cabinet._users.length}}</small></p>
                 </div>
             </div>
 
@@ -16,10 +16,10 @@
                 {{cabinet.description}}
                 <br>
             </div>
-            <div style="position: absolute; bottom: 10px;">
-                <router-link :to="{to: 'cabinet', params: { id: cabinet.id }}" class="button is-small is-outlined is-primary" style="width: 49%;"><b-icon icon="eye" pack="fa"></b-icon><span>Visit</span></router-link>
+            <div style="position: absolute; bottom: 12px; left: 12px; right: 12px;">
+                <router-link :to="{name: 'cabinet', params: { id: cabinet.id }}" class="button is-small is-outlined is-primary" style="width: 49%;"><b-icon icon="eye" pack="fa"></b-icon><span>Visit</span></router-link>
 
-                <router-link :to="{to: 'cabinet', params: { id: cabinet.id }}" class="button is-small is-outlined is-success" style="width: 49%;"><b-icon icon="comments" pack="fa"></b-icon><span>Contact</span></router-link>
+                <router-link :to="{name: 'cabinet', params: { id: cabinet.id }}" class="button is-small is-outlined is-success" style="width: 49%;"><b-icon icon="comments" pack="fa"></b-icon><span>Contact</span></router-link>
             </div>
         </div>
     </div>

@@ -29,10 +29,13 @@ class CabinetController extends Controller
         }
     }
 
-    public function all() {
+    public function all(Request $request) {
+        $cabinets = Cabinet::orderBy('created_at', 'DESC');
+        if($request->search) $cabinets->where('name', 'LIKE', '%'.$request->search.'%');
+
         return response()->json([
             'success' => true,
-            'cabinets' => Cabinet::all(),
+            'cabinets' => $cabinets->get(),
         ]);
     }
 

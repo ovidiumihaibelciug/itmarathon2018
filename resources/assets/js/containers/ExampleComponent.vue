@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div v-for="(_cabinets, index) in chunkArray(cabinets, 4)"  :key="index" class="columns">
-            <div class="column is-3" v-for="cabinet in _cabinets" :key="cabinet.id">
+            <div class="column is-3" v-for="(cabinet, i) in _cabinets" :key="cabinet.id">
                 <CabinetBox :cabinet="cabinet" :key="i"/>
             </div>
         </div>
@@ -49,7 +49,6 @@
             getCabinets() {
                 axios.get(API + 'cabinet/all')
                     .then(({ data }) => {
-                        console.log('a', data)
                         this.cabinets = data.cabinets;
                     });
             },

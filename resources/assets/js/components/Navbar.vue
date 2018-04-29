@@ -16,9 +16,10 @@
 
             <div id="navbarExampleTransparentExample" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item" href="https://bulma.io/">
-
-                    </a>
+                    <router-link class="navbar-item" :to="{name: 'root'}"><b-icon icon="home"></b-icon>&nbsp;Home</router-link>
+                    <div class="navbar-item">
+                        <NavbarSearch />
+                    </div>
                 </div>
                 <div class="navbar-end">
                     <router-link :to="{name: 'cabinet', params: {id: $user.cabinet_id}}" class="navbar-item"><b-icon icon="hospital-building"></b-icon>&nbsp; My cabinet</router-link>
@@ -28,9 +29,11 @@
                             Salut, {{$user.first_name}}
                         </a>
                         <div class="navbar-dropdown is-boxed">
-                            <router-link :to="{name: 'profile', params: { username: $user.username }}" class="navbar-item"><b-icon pack="fa" icon="cog"></b-icon>&nbsp; Profile</router-link>
+                            <router-link :to="{name: 'profile', params: { username: $user.username }}" class="navbar-item"><b-icon icon="account"></b-icon>&nbsp; Profile</router-link>
+                            <router-link :to="{name: 'dashboard'}" class="navbar-item"><b-icon icon="view-dashboard"></b-icon>&nbsp; Dashboard</router-link>
+                            <hr class="navbar-divider">
                             <router-link :to="{name: 'settings'}" class="navbar-item"><b-icon pack="fa" icon="cog"></b-icon>&nbsp; Settings</router-link>
-                            <router-link :to="{name: 'dashboard'}" class="navbar-item"><b-icon pack="fa" icon="cog"></b-icon>&nbsp; Dashboard</router-link>
+                            <a type="submit" @click="logout" class="navbar-item"><b-icon icon="logout"></b-icon>&nbsp; Logout</a>
                         </div>
                     </div>
                 </div>
@@ -39,12 +42,14 @@
     </nav>
 </template>
 <script>
+    import NavbarSearch from './NavbarSearch';
     export default {
         methods: {
             logout() {
-                alert('Mars acasa');
+                axios.post('/logout').then(() => location.reload()).catch(() => location.reload());
             },
         },
+        components: {NavbarSearch}
     };
 </script>
 

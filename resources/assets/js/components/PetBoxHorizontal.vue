@@ -1,6 +1,6 @@
 <template>
-    <div class="box pet-box" v-if="!isDeleted">
-        <article class="media">
+    <div class="box pet-box" v-if="!isDeleted" :style="{padding: '1em'}">
+        <article class="media" :style="{borderTop: 0, padding: 0}">
             <div class="media-left">
                 <PetImage :pet="pet"/>
             </div>
@@ -11,7 +11,7 @@
                         <br>
                         {{pet.description}}
                     </p>
-                    <router-link class="button is-small" style="width: 200px;" :to="{name: 'petProfile', params: { id: pet.id }}">View profile</router-link>
+                    <router-link v-if="$route.name !== 'petProfile'" class="button is-small" style="width: 200px;" :to="{name: 'petProfile', params: { id: pet.id }}">View profile</router-link>
                     <button v-if="pet.user_id === $user.id" @click="dp(pet)" class="button is-small is-danger" style="float: right;">Delete pet profile</button>
                 </div>
             </div>
@@ -23,7 +23,7 @@
     import PetImage from "./PetImage";
     import {API} from "../config";
     export default {
-        props: ['pet'],
+        props: ['pet', 'small'],
         data: function() {
             return {
                 isDeleted: false,

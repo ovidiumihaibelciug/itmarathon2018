@@ -30,8 +30,9 @@
 
                     </div>
                 </div>
-                <div class="column is-one-fifth"></div>
-                <div class="column is-three-thirds">asdasdad</div>
+                <div class="column is-three-thirds">
+                    <IncidentBox v-for="(incident, index) in incidents" :incident="incident" :key="index"/>
+                </div>
             </div>
         </div>
     </section>
@@ -39,12 +40,16 @@
 
 <script>
     import {API} from "../config";
+    import IncidentBox from '../components/IncidentBox';
+
+    function randomDate(start, end) {
+        return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+    }
 
     export default {
         mounted () {
             axios.get(API + `pet/profile/${this.$route.params.id})`)
                 .then(({ data }) => {
-                    console.log(data);
                     this.pet = data.pet;
                     this.isLoading = false;
                 })
@@ -55,6 +60,29 @@
                 pet: {},
                 moment: window.moment,
             };
-        }
+        },
+        computed: {
+            incidents() {
+                return [
+                    {
+                        type: 'vaccine',
+                        cabinet_id: 1,
+                        pet: this.pet,
+                        date: randomDate(new Date(2012, 0, 1), new Date()),
+                    },
+                    {pet: this.pet,
+                        type: 'vaccine',
+                        cabinet_id: 2,
+                        date: randomDate(new Date(2012, 0, 1), new Date()),
+                    },
+                    {pet: this.pet,
+                        type: 'vaccine',
+                        cabinet_id: 3,
+                        date: randomDate(new Date(2012, 0, 1), new Date()),
+                    }
+                ];
+            }
+        },
+        components: {IncidentBox}
     }
 </script>
