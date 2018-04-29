@@ -17,6 +17,7 @@ class CreateCabinetsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('image_id');
+            $table->string('admin_id');
             $table->string('description');
             $table->string('location');
             $table->timestamps();

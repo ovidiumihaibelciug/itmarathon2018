@@ -28,7 +28,7 @@ class User extends Authenticatable
     ];
 
     public function cabinet() {
-        return $this->hasMany(Cabinet::class);
+        return $this->belongsTo(Cabinet::class);
     }
 
     public function pets() {

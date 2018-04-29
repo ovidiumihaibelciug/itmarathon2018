@@ -21,7 +21,7 @@
     export default {
         data: function() {
             return {
-                image: "http://pluspng.com/img-png/user-png-icon-account-avatar-human-male-man-men-people-person-download-svg-download-png-edit-icon-512.png"
+                image: "http://pluspng.com/img-png/user-png-icon-account-avatar-human-male-man-men-people-person-download-svg-download-png-edit-icon-512.png",
             }
         }
     }

@@ -2,7 +2,6 @@
     margin-top: $margin/2;
     .cabinet-img {
         height: 300px;
-        width: 300px;
         background-position: center center;
         background-size: cover;
     }
@@ -14,5 +13,43 @@
         font-size: 2rem;
         text-align: center;
         color: $link;
+    }
+}
+
+.title-doctors {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+.doctor-box {
+    display: flex;
+    .doctor-img {
+        width: 10%;
+        border-radius: 100%;
+        background-position: center center;
+        background-size: cover;
+    }
+    .doctor-fullname {
+        margin: 7px;
+        font-weight: 500;
+        font-size: 1rem;
+    }
+}
+
+.services-section {
+    .service-title {
+        text-align: center;
+        font-size: 1.4rem;
+        font-weight: 600;
+    }
+    .service-box {
+        margin-bottom: 10px;
+        .service-name {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        .service-description {
+            
+        }
     }
 }

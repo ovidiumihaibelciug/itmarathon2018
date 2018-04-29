@@ -8,6 +8,6 @@ class Service extends Model
 {
     //
     public function cabinet() {
-        $this->belongsTo(Cabinet::class);
+        return $this->belongsTo(Cabinet::class);
     }
 }

@@ -24,6 +24,7 @@ class CreatePetsTable extends Migration
             $table->string('deathday')->default(0);
             $table->string('description');
             $table->string('observations');
+
             $table->string('type')->comment('Catel/Pisica/Sobolan/Castor');
             $table->timestamps();
         });
