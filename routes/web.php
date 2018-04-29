@@ -17,4 +17,5 @@ Route::get('/home', 'HomeController@index');
 
 Route::prefix('api')->group(function () {
     Route::get('/user', 'AuthenticationController@getAuthUser')->name('user');
+    Route::post('/pet', 'PetController@add');
 });

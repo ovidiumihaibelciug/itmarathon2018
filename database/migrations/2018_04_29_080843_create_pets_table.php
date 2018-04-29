@@ -16,13 +16,12 @@ class CreatePetsTable extends Migration
         Schema::create('pets', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('owner_id');
-            $table->integer('image_id');
-            $table->integer('cabinet_id');
             $table->string('name');
             $table->string('sex');
+            $table->date('birthday')->default(0);
+            $table->date('deathday')->default(0);
             $table->string('description');
-            $table->integer('age');
-            $table->string('type')->comment('Rasa');
+            $table->string('type')->comment('Catel/Pisica/Sobolan/Castor');
             $table->timestamps();
         });
     }
