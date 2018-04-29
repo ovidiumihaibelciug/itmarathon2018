@@ -22518,3 +22518,9 @@ label.panel-block:hover {
   background: rgba(255, 56, 96, 0.05);
 }
 
+html,
+body {
+  height: 100vh !important;
+  background: whitesmoke;
+}
+

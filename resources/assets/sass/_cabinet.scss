@@ -1,0 +1,18 @@
+.cabinet-section {
+    margin-top: $margin/2;
+    .cabinet-img {
+        height: 300px;
+        width: 300px;
+        background-position: center center;
+        background-size: cover;
+    }
+    .cabinet-div {
+        margin: 0 10px;
+        padding: 20px;
+    }
+    .cabinet-name {
+        font-size: 2rem;
+        text-align: center;
+        color: $link;
+    }
+}

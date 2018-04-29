@@ -10,6 +10,7 @@
 @import "~bulma/bulma.sass";
 
 @import "~buefy/src/scss/buefy";
+
 body {
   background-color: #f7f7f7;
 }
@@ -19,3 +20,14 @@ body {
 //    text-decoration: none !important;
 //  }
 //}
+
+
+//stuff
+@import "resets";
+@import "vars";
+@import "inc";
+
+// pages
+@import "home";
+@import "profile";
+@import "cabinet";
